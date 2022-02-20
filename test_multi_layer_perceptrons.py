@@ -1,7 +1,7 @@
 import numpy as np
 
 from multi_layer_perceptrons import MultiLayerPerceptrons
-from data_set import make_xor_dataset
+from dataset import make_xor_dataset
 
 
 def test_multi_layer_perceptrons():
@@ -66,7 +66,7 @@ def test_multi_layer_perceptrons():
 
     # evaluate the model
     print("evaluate")
-    confusionMatrix = np.zeros((patterns, patterns))
+    confusion_matrix = np.zeros((patterns, patterns))
     accuracy = 0.0
     precision = np.zeros(patterns)
     recall = np.zeros(patterns)
@@ -76,7 +76,7 @@ def test_multi_layer_perceptrons():
         actual_ = np.where(test_T[i] == 1) # find the position of the value 1
         col = predicted_[0][0] # NOTE
         row = actual_[0][0] # NOTE
-        confusionMatrix[row][col] += 1
+        confusion_matrix[row][col] += 1
 
     for i in range(patterns):
         col_ = 0.0
@@ -84,12 +84,12 @@ def test_multi_layer_perceptrons():
 
         for j in range(patterns):
             if i == j:
-                accuracy += confusionMatrix[i][j]
-                precision[i] += confusionMatrix[j][i] # NOTE
-                recall[i] += confusionMatrix[i][j]
+                accuracy += confusion_matrix[i][j]
+                precision[i] += confusion_matrix[j][i] # NOTE
+                recall[i] += confusion_matrix[i][j]
 
-            col_ += confusionMatrix[j][i] # NOTE
-            row_ += confusionMatrix[i][j]
+            col_ += confusion_matrix[j][i] # NOTE
+            row_ += confusion_matrix[i][j]
 
         precision[i] /= col_
         recall[i] /= row_

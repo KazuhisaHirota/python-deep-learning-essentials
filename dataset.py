@@ -1,7 +1,8 @@
 import numpy as np
 
 
-def makeDataSet(start, end, mu1, mu2, answer, x, t):
+def make_dataset(start: int, end: int, mu1: float, mu2: float, answer: int, x, t):
+    
     for i in range(start, end):
         x[i][0] = np.random.randn() + mu1 # input variable 1
         x[i][1] = np.random.randn() + mu2 # input variable 2
