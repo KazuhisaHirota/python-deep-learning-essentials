@@ -55,3 +55,15 @@ def make_binomial_dataset(X, patterns: int, train_N_each: int,
 
                 else:
                     X[n_][i] = rng.binomial(n=1, p=p_noise)
+
+def make_binomial_labels(T, patterns: int, test_N_each: int, n_out: int):
+
+    for pattern in range(patterns):
+        for n in range(test_N_each):
+            n_ = pattern * test_N_each + n
+
+            for i in range(n_out):
+                if i == pattern:
+                    T[n_][i] = 1
+                else:
+                    T[n_][i] = 0

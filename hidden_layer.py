@@ -50,6 +50,20 @@ class HiddenLayer(object):
 
         return y
 
+    def output_binomial(self, x, rng: np.random.RandomState):
+
+        x_cast = np.zeros(len(x))
+        for i in range(len(x_cast)):
+            x_cast[i] = float(x[i])
+        
+        out = self.output(x_cast)
+        
+        y = np.zeros(self.n_out)
+        for j in range(self.n_out):
+            y[j] = rng.binomial(n=1, p=out[j])
+
+        return y
+    
     def forward(self, x):
         return self.output(x)
 
