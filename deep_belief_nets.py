@@ -29,7 +29,7 @@ class DeepBeliefNets(object):
             # weight matrices and bias vectors will be shared with RBM layers
             self.sigmoid_layers.append(
                 HiddenLayer(hidden_layer_n_in, hidden_layer_sizes[i],
-                            W=None, b=None, activation="sigmoid")) # TODO add rng
+                            W=None, b=None, rng=rng, activation="sigmoid"))
 
             # construct RBM layers
             self.rbm_layers.append(
