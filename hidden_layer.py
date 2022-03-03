@@ -4,11 +4,13 @@ from activation_function import *
 
 class HiddenLayer(object):
 
-    def __init__(self, n_in: int, n_out: int, W, b, activation: str):
+    def __init__(self, n_in: int, n_out: int, W, b, rng: np.random.RandomState, activation: str):
         
-        if W == None:
-            rng = np.random.default_rng()
+        if rng == None:
+            rng = np.random.RandomState(1234) # seed
 
+        if W == None:
+            
             W = np.zeros((n_out, n_in))
             w_ = 1. / float(n_in)
 
@@ -24,6 +26,7 @@ class HiddenLayer(object):
         self.n_out = n_out
         self.W = W
         self.b = b
+        self.rng = rng # not used ?
         
         if activation == "sigmoid" or activation == None:
             self.activation = lambda x : sigmoid(x)

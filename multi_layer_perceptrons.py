@@ -14,7 +14,7 @@ class MultiLayerPerceptrons(object):
 
         # construct hidden layer with tanh as activation function
         activation_func = "tanh" # sigmoid or tanh
-        self.hidden_layer = HiddenLayer(n_in, n_hidden, None, None, activation_func)
+        self.hidden_layer = HiddenLayer(n_in, n_hidden, W=None, b=None, rng=None, activation=activation_func)
 
         # construct output layer i.e. multi-class logistic layer
         self.logistic_layer = LogisticRegression(n_hidden, n_out)
